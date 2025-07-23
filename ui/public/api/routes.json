@@ -1,0 +1,298 @@
+{
+  "version": "1.0.0",
+  "updated": "2024-01-01T00:00:00Z",
+  "routes": {
+    "public": [
+      {
+        "path": "/login",
+        "name": "Login",
+        "title": "登录",
+        "component": "LoginView",
+        "requiresAuth": false,
+        "roles": [],
+        "icon": "login"
+      }
+    ],
+    "protected": [
+      {
+        "path": "/dashboard",
+        "name": "Dashboard",
+        "title": "仪表盘",
+        "component": "DashboardView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr", "employee"],
+        "icon": "dashboard"
+      },
+      {
+        "path": "/employees",
+        "name": "Employees",
+        "title": "员工管理",
+        "component": "EmployeeListView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "team"
+      },
+      {
+        "path": "/employees/create",
+        "name": "EmployeeCreate",
+        "title": "创建员工",
+        "component": "EmployeeCreateView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "user-add",
+        "parent": "/employees"
+      },
+      {
+        "path": "/employees/:id",
+        "name": "EmployeeDetail",
+        "title": "员工详情",
+        "component": "EmployeeDetailView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "user",
+        "parent": "/employees"
+      },
+      {
+        "path": "/employees/:id/edit",
+        "name": "EmployeeEdit",
+        "title": "编辑员工",
+        "component": "EmployeeEditView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "edit",
+        "parent": "/employees"
+      },
+      {
+        "path": "/organization/departments",
+        "name": "Departments",
+        "title": "部门管理",
+        "component": "DepartmentListView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "apartment",
+        "group": "organization"
+      },
+      {
+        "path": "/organization/positions",
+        "name": "Positions",
+        "title": "职位管理",
+        "component": "PositionListView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "solution",
+        "group": "organization"
+      },
+      {
+        "path": "/organization/job-levels",
+        "name": "JobLevels",
+        "title": "职级管理",
+        "component": "JobLevelListView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "trophy",
+        "group": "organization"
+      },
+      {
+        "path": "/system/users",
+        "name": "Users",
+        "title": "用户管理",
+        "component": "UserListView",
+        "requiresAuth": true,
+        "roles": ["admin"],
+        "icon": "user",
+        "group": "system"
+      },
+      {
+        "path": "/system/roles",
+        "name": "Roles",
+        "title": "角色管理",
+        "component": "RoleListView",
+        "requiresAuth": true,
+        "roles": ["admin"],
+        "icon": "team",
+        "group": "system"
+      },
+      {
+        "path": "/system/permissions",
+        "name": "Permissions",
+        "title": "权限管理",
+        "component": "PermissionListView",
+        "requiresAuth": true,
+        "roles": ["admin"],
+        "icon": "safety",
+        "group": "system"
+      },
+      {
+        "path": "/salary",
+        "name": "Salary",
+        "title": "薪资管理",
+        "component": "SalaryListView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr"],
+        "icon": "dollar",
+        "group": "salary"
+      },
+      {
+        "path": "/my-salary",
+        "name": "MySalary",
+        "title": "我的薪资",
+        "component": "MySalaryView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr", "employee"],
+        "icon": "wallet",
+        "group": "salary"
+      },
+      {
+        "path": "/profile",
+        "name": "Profile",
+        "title": "个人资料",
+        "component": "ProfileView",
+        "requiresAuth": true,
+        "roles": ["admin", "hr", "employee"],
+        "icon": "user"
+      }
+    ]
+  },
+  "navigation": {
+    "dashboard": {
+      "title": "仪表盘",
+      "icon": "dashboard",
+      "path": "/dashboard",
+      "order": 1
+    },
+    "employees": {
+      "title": "员工管理",
+      "icon": "team",
+      "path": "/employees",
+      "order": 2,
+      "children": [
+        {
+          "title": "员工列表",
+          "path": "/employees"
+        },
+        {
+          "title": "创建员工",
+          "path": "/employees/create"
+        }
+      ]
+    },
+    "organization": {
+      "title": "组织管理",
+      "icon": "apartment",
+      "order": 3,
+      "children": [
+        {
+          "title": "部门管理",
+          "path": "/organization/departments"
+        },
+        {
+          "title": "职位管理",
+          "path": "/organization/positions"
+        },
+        {
+          "title": "职级管理",
+          "path": "/organization/job-levels"
+        }
+      ]
+    },
+    "salary": {
+      "title": "薪资管理",
+      "icon": "dollar",
+      "order": 4,
+      "children": [
+        {
+          "title": "薪资管理",
+          "path": "/salary"
+        },
+        {
+          "title": "我的薪资",
+          "path": "/my-salary"
+        }
+      ]
+    },
+    "system": {
+      "title": "系统管理",
+      "icon": "setting",
+      "order": 5,
+      "roles": ["admin"],
+      "children": [
+        {
+          "title": "用户管理",
+          "path": "/system/users"
+        },
+        {
+          "title": "角色管理",
+          "path": "/system/roles"
+        },
+        {
+          "title": "权限管理",
+          "path": "/system/permissions"
+        }
+      ]
+    },
+    "profile": {
+      "title": "个人资料",
+      "icon": "user",
+      "path": "/profile",
+      "order": 6
+    }
+  },
+  "permissions": {
+    "/dashboard": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr", "employee"]
+    },
+    "/employees": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/employees/create": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/employees/:id": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/employees/:id/edit": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/organization/departments": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/organization/positions": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/organization/job-levels": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/system/users": {
+      "requiresAuth": true,
+      "roles": ["admin"]
+    },
+    "/system/roles": {
+      "requiresAuth": true,
+      "roles": ["admin"]
+    },
+    "/system/permissions": {
+      "requiresAuth": true,
+      "roles": ["admin"]
+    },
+    "/salary": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr"]
+    },
+    "/my-salary": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr", "employee"]
+    },
+    "/profile": {
+      "requiresAuth": true,
+      "roles": ["admin", "hr", "employee"]
+    }
+  }
+}

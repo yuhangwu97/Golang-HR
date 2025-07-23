@@ -1,0 +1,6 @@
+ui/node_modules
+.claude
+.idea
+.vscode
+.DS_Store
+ui/dist
